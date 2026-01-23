@@ -517,119 +517,421 @@ function updateFilteredMethods() {
   }
 }
 
+// Function to generate context summary narrative
+function generateContextSummary() {
+  const selections = state.userSelections;
+  let narrative = "Based on your selections, we've identified methods suited to ";
+
+  const parts = [];
+
+  // Add SEM level
+  if (selections.sem_level && selections.sem_level.length > 0) {
+    parts.push(`measuring change at the ${selections.sem_level.join(' and ')} level`);
+  }
+
+  // Add context characteristics
+  const contextParts = [];
+
+  if (selections.level_of_political_stability && selections.level_of_political_stability.length > 0) {
+    contextParts.push(`${selections.level_of_political_stability.join(' or ').toLowerCase()} political conditions`);
+  }
+
+  if (selections.level_of_cultural_permissiveness && selections.level_of_cultural_permissiveness.length > 0) {
+    contextParts.push(`${selections.level_of_cultural_permissiveness.join(' or ').toLowerCase()} cultural permissiveness`);
+  }
+
+  if (selections.level_of_political_sensitivity && selections.level_of_political_sensitivity.length > 0) {
+    contextParts.push(`${selections.level_of_political_sensitivity.join(' or ').toLowerCase()} political sensitivity`);
+  }
+
+  if (selections.participants_access_to_technology_eg_phones_internet && selections.participants_access_to_technology_eg_phones_internet.length > 0) {
+    contextParts.push(`${selections.participants_access_to_technology_eg_phones_internet.join(' or ').toLowerCase()} technology access`);
+  }
+
+  if (contextParts.length > 0) {
+    parts.push(`in a context with ${contextParts.join(', ')}`);
+  }
+
+  // Add resource constraints
+  const resourceParts = [];
+
+  if (selections.financial_resources_available && selections.financial_resources_available.length > 0) {
+    resourceParts.push(`${selections.financial_resources_available.join(' or ').toLowerCase()} financial resources`);
+  }
+
+  if (selections.human_resource_skills_available && selections.human_resource_skills_available.length > 0) {
+    resourceParts.push(`${selections.human_resource_skills_available.join(' or ').toLowerCase()} human resource skills`);
+  }
+
+  if (resourceParts.length > 0) {
+    parts.push(`with ${resourceParts.join(' and ')}`);
+  }
+
+  if (parts.length > 0) {
+    narrative += parts.join(', ') + '.';
+  } else {
+    narrative = "We've identified methods that match your requirements.";
+  }
+
+  return narrative;
+}
+
+// Function to generate decision trace showing filter impact
+function generateDecisionTrace() {
+  // Start with all methods
+  let remaining = [...state.methodsData.methods];
+  let trace = [];
+
+  trace.push({
+    step: "Starting pool",
+    count: remaining.length,
+    description: "all available methods"
+  });
+
+  // For each selected constraint category
+  for (const category in state.userSelections) {
+    const selectedOptions = state.userSelections[category];
+    const beforeCount = remaining.length;
+
+    // Filter methods
+    remaining = remaining.filter(method => {
+      if (!method.attributes[category]) {
+        return false;
+      }
+      return selectedOptions.some(option =>
+        method.attributes[category].includes(option)
+      );
+    });
+
+    const removed = beforeCount - remaining.length;
+
+    if (removed > 0) {
+      const categoryObj = state.categories.find(c => c.id === category);
+      const categoryName = categoryObj ? categoryObj.name : category;
+
+      trace.push({
+        step: categoryName,
+        removed: removed,
+        count: remaining.length,
+        description: selectedOptions.join(', ')
+      });
+    }
+  }
+
+  return trace;
+}
+
+// Function to group methods by fit quality
+function groupMethodsByFit() {
+  const groups = {
+    bestFit: [],
+    goodAlternatives: [],
+    stretchOptions: []
+  };
+
+  // If no selections, all filtered methods are best fit
+  if (Object.keys(state.userSelections).length === 0) {
+    groups.bestFit = state.filteredMethods.map(m => ({ method: m, mismatches: [] }));
+    return groups;
+  }
+
+  state.filteredMethods.forEach(method => {
+    let mismatches = [];
+
+    // Check each user selection against method
+    for (const category in state.userSelections) {
+      const selectedOptions = state.userSelections[category];
+      const methodValues = method.attributes[category] || [];
+
+      const hasMatch = selectedOptions.some(option =>
+        methodValues.includes(option)
+      );
+
+      if (!hasMatch) {
+        const categoryObj = state.categories.find(c => c.id === category);
+        mismatches.push({
+          category: categoryObj ? categoryObj.name : category,
+          categoryId: category,
+          selected: selectedOptions,
+          methodHas: methodValues
+        });
+      }
+    }
+
+    // Categorize by match quality
+    if (mismatches.length === 0) {
+      groups.bestFit.push({ method: method, mismatches: [] });
+    } else if (mismatches.length === 1) {
+      groups.goodAlternatives.push({
+        method: method,
+        mismatches: mismatches
+      });
+    } else {
+      groups.stretchOptions.push({
+        method: method,
+        mismatches: mismatches
+      });
+    }
+  });
+
+  return groups;
+}
+
 // Function to update the results display
 function updateResultsDisplay() {
   const resultsContainer = document.getElementById('results-container');
   resultsContainer.innerHTML = '';
-  
+
   if (state.filteredMethods.length === 0) {
       // No results
       resultsContainer.innerHTML = `
           <div class="no-results">No matching methodologies found. Try adjusting your selections.</div>
       `;
-  } else {
-      // Create a card for each method
-      state.filteredMethods.forEach(method => {
-          const methodCard = document.createElement('div');
-          methodCard.className = 'methodology-card';
-          
-          // Create method header
-          const header = document.createElement('div');
-          header.className = 'methodology-header';
-          header.innerHTML = `<h3>${method.name}</h3>`;
-          
-          // Create method details
-          const details = document.createElement('div');
-          details.className = 'methodology-details';
-          details.innerHTML = `<p>${method.description}</p>`;
-          
-          // Create criteria grid
-          const criteriaGrid = document.createElement('div');
-          criteriaGrid.className = 'criteria-grid';
-          
-          // Add key attributes to the criteria grid
-          const keyCategories = ['sem_level', 'validity', 'reliability', 'value_for_money', 'resource_requirement'];
-          keyCategories.forEach(catId => {
-              const category = state.categories.find(c => c.id === catId);
-              if (category && method.attributes[catId]) {
-                  const values = method.attributes[catId].join(', ');
-                  criteriaGrid.innerHTML += `
-                      <div class="criteria-item">
-                          <div class="criteria-label">${category.name}</div>
-                          <div class="criteria-value">${values}</div>
-                      </div>
-                  `;
-              }
-          });
-          
-          details.appendChild(criteriaGrid);
-          
-          // Add show more button
-          const showMoreBtn = document.createElement('button');
-          showMoreBtn.className = 'show-more-btn';
-          showMoreBtn.textContent = 'Show All Attributes';
-          showMoreBtn.addEventListener('click', () => {
-              // Toggle between showing key attributes and all attributes
-              if (showMoreBtn.textContent === 'Show All Attributes') {
-                  showMoreBtn.textContent = 'Show Less';
-                  criteriaGrid.innerHTML = ''; // Clear existing criteria
-                  
-                  // Add all attributes
-                  for (const catId in method.attributes) {
-                      const category = state.categories.find(c => c.id === catId);
-                      if (category) {
-                          const values = method.attributes[catId].join(', ');
-                          criteriaGrid.innerHTML += `
-                              <div class="criteria-item">
-                                  <div class="criteria-label">${category.name}</div>
-                                  <div class="criteria-value">${values}</div>
-                              </div>
-                          `;
-                      }
-                  }
-              } else {
-                  showMoreBtn.textContent = 'Show All Attributes';
-                  criteriaGrid.innerHTML = ''; // Clear existing criteria
-                  
-                  // Add only key attributes
-                  keyCategories.forEach(catId => {
-                      const category = state.categories.find(c => c.id === catId);
-                      if (category && method.attributes[catId]) {
-                          const values = method.attributes[catId].join(', ');
-                          criteriaGrid.innerHTML += `
-                              <div class="criteria-item">
-                                  <div class="criteria-label">${category.name}</div>
-                                  <div class="criteria-value">${values}</div>
-                              </div>
-                          `;
-                      }
-                  });
-              }
-          });
-          
-          details.appendChild(showMoreBtn);
-          
-          // Add header and details to the card
-          methodCard.appendChild(header);
-          methodCard.appendChild(details);
-          
-          // Toggle details when clicking on the header
-          header.addEventListener('click', function(e) {
-              if (details.classList.contains('active')) {
-                  details.classList.remove('active');
-              } else {
-                  // Close other open details
-                  document.querySelectorAll('.methodology-details.active').forEach(detail => {
-                      if (detail !== details) {
-                          detail.classList.remove('active');
-                      }
-                  });
-                  details.classList.add('active');
-              }
-          });
-          
-          resultsContainer.appendChild(methodCard);
+      return;
+  }
+
+  // 1. Add context summary if there are user selections
+  if (Object.keys(state.userSelections).length > 0) {
+    const contextSummary = generateContextSummary();
+    const summaryDiv = document.createElement('div');
+    summaryDiv.className = 'context-summary';
+    summaryDiv.innerHTML = `
+      <h3>Your Context</h3>
+      <p>${contextSummary}</p>
+    `;
+    resultsContainer.appendChild(summaryDiv);
+
+    // 2. Add decision trace
+    const trace = generateDecisionTrace();
+    if (trace.length > 1) { // Only show if there were filters applied
+      const traceDiv = document.createElement('div');
+      traceDiv.className = 'decision-trace';
+      traceDiv.innerHTML = '<h3>How We Narrowed Your Options</h3>';
+
+      const traceList = document.createElement('div');
+      traceList.className = 'trace-list';
+
+      trace.forEach((item, index) => {
+        const traceItem = document.createElement('div');
+        traceItem.className = 'trace-item';
+
+        if (index === 0) {
+          traceItem.innerHTML = `
+            <div class="trace-step">
+              <strong>${item.count}</strong> ${item.description}
+            </div>
+          `;
+        } else {
+          traceItem.innerHTML = `
+            <div class="trace-arrow">↓</div>
+            <div class="trace-step">
+              <strong>${item.step}</strong> (${item.description}) → <span class="removed-count">${item.removed} removed</span>
+              <div class="remaining-count">${item.count} remaining</div>
+            </div>
+          `;
+        }
+
+        traceList.appendChild(traceItem);
       });
+
+      traceDiv.appendChild(traceList);
+      resultsContainer.appendChild(traceDiv);
+    }
+  }
+
+  // 3. Group methods by fit quality
+  const groups = groupMethodsByFit();
+
+  // Helper function to create method card
+  function createMethodCard(methodData) {
+    const method = methodData.method;
+    const mismatches = methodData.mismatches || [];
+
+    const methodCard = document.createElement('div');
+    methodCard.className = 'methodology-card';
+
+    // Create method header
+    const header = document.createElement('div');
+    header.className = 'methodology-header';
+    header.innerHTML = `<h3>${method.name}</h3>`;
+
+    // Create method details
+    const details = document.createElement('div');
+    details.className = 'methodology-details';
+
+    // Add badges if available
+    if (method.costTier || method.connectivity || method.type) {
+      const badgesDiv = document.createElement('div');
+      badgesDiv.className = 'method-badges';
+
+      if (method.costTier) {
+        badgesDiv.innerHTML += `<span class="badge cost-badge">💰 Cost: ${method.costTier}</span>`;
+      }
+      if (method.connectivity) {
+        badgesDiv.innerHTML += `<span class="badge connectivity-badge">📶 Connectivity: ${method.connectivity}</span>`;
+      }
+      if (method.type) {
+        badgesDiv.innerHTML += `<span class="badge type-badge">🎯 Type: ${method.type}</span>`;
+      }
+
+      details.appendChild(badgesDiv);
+    }
+
+    // Add description
+    const descriptionP = document.createElement('p');
+    descriptionP.textContent = method.description;
+    details.appendChild(descriptionP);
+
+    // Add mismatch info if present
+    if (mismatches.length > 0) {
+      const mismatchDiv = document.createElement('div');
+      mismatchDiv.className = 'mismatch-info';
+      mismatchDiv.innerHTML = '<strong>Note:</strong> This method differs in: ';
+      const mismatchText = mismatches.map(m => m.category).join(', ');
+      mismatchDiv.innerHTML += mismatchText;
+      details.appendChild(mismatchDiv);
+    }
+
+    // Add link if available
+    if (method.link) {
+      const linkDiv = document.createElement('div');
+      linkDiv.className = 'method-link';
+      linkDiv.innerHTML = `<a href="${method.link}" target="_blank">Learn more →</a>`;
+      details.appendChild(linkDiv);
+    }
+
+    // Create criteria grid
+    const criteriaGrid = document.createElement('div');
+    criteriaGrid.className = 'criteria-grid';
+
+    // Add key attributes to the criteria grid
+    const keyCategories = ['sem_level', 'validity', 'reliability', 'value_for_money', 'resource_requirement'];
+    keyCategories.forEach(catId => {
+        const category = state.categories.find(c => c.id === catId);
+        if (category && method.attributes[catId]) {
+            const values = method.attributes[catId].join(', ');
+            criteriaGrid.innerHTML += `
+                <div class="criteria-item">
+                    <div class="criteria-label">${category.name}</div>
+                    <div class="criteria-value">${values}</div>
+                </div>
+            `;
+        }
+    });
+
+    details.appendChild(criteriaGrid);
+
+    // Add show more button
+    const showMoreBtn = document.createElement('button');
+    showMoreBtn.className = 'show-more-btn';
+    showMoreBtn.textContent = 'Show All Attributes';
+    showMoreBtn.addEventListener('click', () => {
+        // Toggle between showing key attributes and all attributes
+        if (showMoreBtn.textContent === 'Show All Attributes') {
+            showMoreBtn.textContent = 'Show Less';
+            criteriaGrid.innerHTML = ''; // Clear existing criteria
+
+            // Add all attributes
+            for (const catId in method.attributes) {
+                const category = state.categories.find(c => c.id === catId);
+                if (category) {
+                    const values = method.attributes[catId].join(', ');
+                    criteriaGrid.innerHTML += `
+                        <div class="criteria-item">
+                            <div class="criteria-label">${category.name}</div>
+                            <div class="criteria-value">${values}</div>
+                        </div>
+                    `;
+                }
+            }
+        } else {
+            showMoreBtn.textContent = 'Show All Attributes';
+            criteriaGrid.innerHTML = ''; // Clear existing criteria
+
+            // Add only key attributes
+            keyCategories.forEach(catId => {
+                const category = state.categories.find(c => c.id === catId);
+                if (category && method.attributes[catId]) {
+                    const values = method.attributes[catId].join(', ');
+                    criteriaGrid.innerHTML += `
+                        <div class="criteria-item">
+                            <div class="criteria-label">${category.name}</div>
+                            <div class="criteria-value">${values}</div>
+                        </div>
+                    `;
+                }
+            });
+        }
+    });
+
+    details.appendChild(showMoreBtn);
+
+    // Add header and details to the card
+    methodCard.appendChild(header);
+    methodCard.appendChild(details);
+
+    // Toggle details when clicking on the header
+    header.addEventListener('click', function(e) {
+        if (details.classList.contains('active')) {
+            details.classList.remove('active');
+        } else {
+            // Close other open details
+            document.querySelectorAll('.methodology-details.active').forEach(detail => {
+                if (detail !== details) {
+                    detail.classList.remove('active');
+                }
+            });
+            details.classList.add('active');
+        }
+    });
+
+    return methodCard;
+  }
+
+  // Display Best Fit section
+  if (groups.bestFit.length > 0) {
+    const bestFitSection = document.createElement('div');
+    bestFitSection.className = 'tier-section best-fit-section';
+    bestFitSection.innerHTML = `<h3 class="tier-header">⭐ Best Fit (${groups.bestFit.length} ${groups.bestFit.length === 1 ? 'method' : 'methods'})</h3>`;
+
+    groups.bestFit.forEach(methodData => {
+      bestFitSection.appendChild(createMethodCard(methodData));
+    });
+
+    resultsContainer.appendChild(bestFitSection);
+  }
+
+  // Display Good Alternatives section
+  if (groups.goodAlternatives.length > 0) {
+    const alternativesSection = document.createElement('div');
+    alternativesSection.className = 'tier-section alternatives-section';
+    alternativesSection.innerHTML = `<h3 class="tier-header">🔸 Good Alternatives (${groups.goodAlternatives.length} ${groups.goodAlternatives.length === 1 ? 'method' : 'methods'})</h3>`;
+
+    groups.goodAlternatives.forEach(methodData => {
+      alternativesSection.appendChild(createMethodCard(methodData));
+    });
+
+    resultsContainer.appendChild(alternativesSection);
+  }
+
+  // Display Stretch Options section
+  if (groups.stretchOptions.length > 0) {
+    const stretchSection = document.createElement('div');
+    stretchSection.className = 'tier-section stretch-section';
+    stretchSection.innerHTML = `<h3 class="tier-header">🚀 Stretch Options (${groups.stretchOptions.length} ${groups.stretchOptions.length === 1 ? 'method' : 'methods'})</h3>`;
+
+    groups.stretchOptions.forEach(methodData => {
+      stretchSection.appendChild(createMethodCard(methodData));
+    });
+
+    resultsContainer.appendChild(stretchSection);
+  }
+
+  // If no methods in any category (shouldn't happen, but just in case)
+  if (groups.bestFit.length === 0 && groups.goodAlternatives.length === 0 && groups.stretchOptions.length === 0) {
+    resultsContainer.innerHTML = `
+      <div class="no-results">No methods match all constraints. Consider these alternatives:</div>
+    `;
   }
 }
 

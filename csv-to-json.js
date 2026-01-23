@@ -89,15 +89,15 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
             description: `${methodName} methodology for adolescent girl empowerment research`,
             attributes: {}
         };
-        
+
         // Process each column
         for (let j = 1; j < values.length && j < headers.length; j++) {
             const value = values[j].trim();
             if (value === '') continue;
-            
+
             const header = headers[j];
             const headerLower = header.toLowerCase().trim();
-            
+
             // Handle Link column specially
             if (headerLower === 'link' || headerLower === 'url' || headerLower === 'reference') {
                 // Basic URL validation and formatting
@@ -108,6 +108,39 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
                     if (value.includes('.') && !value.includes(' ')) {
                         method.link = `https://${value}`;
                     }
+                }
+                continue;
+            }
+
+            // Handle Cost Tier column
+            if (headerLower === 'cost tier') {
+                if (value && value !== 'null') {
+                    method.costTier = value;
+                }
+                continue;
+            }
+
+            // Handle Connectivity column
+            if (headerLower === 'connectivity') {
+                if (value && value !== 'null') {
+                    method.connectivity = value;
+                }
+                continue;
+            }
+
+            // Handle Type column
+            if (headerLower === 'type') {
+                if (value && value !== 'null') {
+                    method.type = value;
+                }
+                continue;
+            }
+
+            // Handle Description column
+            if (headerLower === 'description') {
+                if (value && value !== 'null') {
+                    // Override the auto-generated description with the CSV value
+                    method.description = value;
                 }
                 continue;
             }
