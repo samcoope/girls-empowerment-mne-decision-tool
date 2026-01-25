@@ -782,6 +782,11 @@ function updateResultsDisplay() {
     descriptionPreview.className = 'methodology-description-preview';
     descriptionPreview.innerHTML = `<p>${method.description}</p>`;
 
+    // Create "View More" toggle button
+    const viewMoreBtn = document.createElement('button');
+    viewMoreBtn.className = 'view-more-toggle-btn';
+    viewMoreBtn.innerHTML = 'View More <span class="arrow">▼</span>';
+
     // Create method details
     const details = document.createElement('div');
     details.className = 'methodology-details';
@@ -914,15 +919,17 @@ function updateResultsDisplay() {
 
     details.appendChild(showMoreBtn);
 
-    // Add header, description preview, and details to the card
+    // Add header, description preview, button, and details to the card
     methodCard.appendChild(header);
     methodCard.appendChild(descriptionPreview);
+    methodCard.appendChild(viewMoreBtn);
     methodCard.appendChild(details);
 
-    // Toggle details when clicking on the header
-    header.addEventListener('click', function(e) {
+    // Toggle details when clicking on the "View More" button
+    viewMoreBtn.addEventListener('click', function(e) {
         if (details.classList.contains('active')) {
             details.classList.remove('active');
+            viewMoreBtn.innerHTML = 'View More <span class="arrow">▼</span>';
         } else {
             // Close other open details
             document.querySelectorAll('.methodology-details.active').forEach(detail => {
@@ -930,7 +937,14 @@ function updateResultsDisplay() {
                     detail.classList.remove('active');
                 }
             });
+            // Update other "View More" buttons
+            document.querySelectorAll('.view-more-toggle-btn').forEach(btn => {
+                if (btn !== viewMoreBtn) {
+                    btn.innerHTML = 'View More <span class="arrow">▼</span>';
+                }
+            });
             details.classList.add('active');
+            viewMoreBtn.innerHTML = 'View Less <span class="arrow">▲</span>';
         }
     });
 
