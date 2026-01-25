@@ -1,20 +1,1145 @@
 {
-  "metadata": {
-    "source": "methodologies.csv",
-    "generated": "2026-01-25T18:10:44.622Z",
-    "total_categories": 1,
-    "total_methods": 0
-  },
   "categories": [
     {
-      "id": "internet",
-      "name": "internet",
+      "id": "sem_level",
+      "name": "SEM Level",
       "options": [
-        "High;Participant's Access to Technology eg. phones",
-        "Medium;Participant's Access to Technology eg. phones",
-        "Low;Level of Political Sensitivity - High;Level of Political Sensitivity - Medium;Level of Political Sensitivity - Low;Participation - Inherently participatory;Participation - Potentially participatory;Participation - Not participatory;Potential for Inclusion of Marginalised Girls - High;Potential for Inclusion of Marginalised Girls - Medium;Potential for Inclusion of Marginalised Girls - Low;Potential for Behavioural Insight Integration - High;Potential for Behavioural Insight Integration - Medium;Potential for Behavioural Insight Integration - Low;Link;Link2;Cost Tier;Connectivity;Type;Description"
+        "Individual",
+        "Interpersonal",
+        "Community",
+        "Institutional"
+      ]
+    },
+    {
+      "id": "level_of_political_stability",
+      "name": "Level of Political Stability",
+      "options": [
+        "Stable",
+        "Fragile",
+        "Conflict Affected"
+      ]
+    },
+    {
+      "id": "level_of_cultural_restrictiveness",
+      "name": "Level of Cultural Restrictiveness",
+      "options": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "id": "financial_resources_available",
+      "name": "Financial Resources Available",
+      "options": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "id": "human_resource_skills_available",
+      "name": "Human Resource Skills Available",
+      "options": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "id": "participants_access_to_technology_eg_phones_internet",
+      "name": "Participant's Access to Technology eg. phones, internet",
+      "options": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "id": "level_of_political_sensitivity",
+      "name": "Level of Political Sensitivity",
+      "options": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "id": "participation",
+      "name": "Participation",
+      "options": [
+        "Inherently participatory",
+        "Potentially participatory",
+        "Not participatory"
+      ]
+    },
+    {
+      "id": "potential_for_inclusion_of_marginalised_girls",
+      "name": "Potential for Inclusion of Marginalised Girls",
+      "options": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "id": "potential_for_behavioural_insight_integration",
+      "name": "Potential for Behavioural Insight Integration",
+      "options": [
+        "High",
+        "Medium",
+        "Low"
       ]
     }
   ],
-  "methods": []
+  "methods": [
+    {
+      "name": "Quantitative Surveys (Digital/Online)",
+      "description": "Structured questionnaires administered via phones/web to generate comparable numeric estimates of outcomes and determinants.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium"
+        ],
+        "level_of_political_sensitivity": [
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://cdn.who.int/media/docs/default-source/documents/ddi/score/tools/mics.docx?sfvrsn=b7eab5ef_3"
+    },
+    {
+      "name": "Individual Interviews (Longitudinal)",
+      "description": "Repeat interviews with the same participants over time to understand trajectories, turning points, and drivers of change.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://www.researchgate.net/publication/257641899_The_Longitudinal_Qualitative_Interview"
+    },
+    {
+      "name": "Quantitative Surveys (Longitudinal)",
+      "description": "Repeated survey waves (panel/cohort) to measure change over time and relate it to exposure, events, or implementation shifts.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://learning.closer.ac.uk/learning-modules/introduction/"
+    },
+    {
+      "name": "Photovoice",
+      "description": "Participants use photography plus facilitated discussion/captioning to document experiences and communicate priorities to decision-makers.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://www.betterevaluation.org/tools-resources/see-it-our-way-participatory-photography-tool-for-advocacy"
+    },
+    {
+      "name": "Participatory Video/Digital Storytelling",
+      "description": "Participants create short films or digital stories to express priorities and document change, supported by facilitation and ethical safeguards.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://playground.womenwin.org/wp-content/uploads/2023/01/Digital-Storytelling-Toolkit.pdf"
+    },
+    {
+      "name": "Digital Diaries/Journals",
+      "description": "Participants submit time-ordered entries (text/audio/photo) via phones/apps to capture experiences as they happen and reduce recall bias.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium"
+        ],
+        "level_of_political_sensitivity": [
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "High",
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High"
+        ]
+      },
+      "link": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2022/02/Diary-Studies-Working-Paper.pdf"
+    },
+    {
+      "name": "Storytelling Circles",
+      "description": "Small-group story-sharing with agreed prompts and facilitation to surface lived experience, sense-making, and collective reflection.",
+      "attributes": {
+        "sem_level": [
+          "Interpersonal",
+          "Community"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://usdac.us/storycircles",
+      "link2": "https://www.unesco.ch/wp-content/uploads/2023/06/370336eng-UNESCO-Story-circles-Manual.pdf"
+    },
+    {
+      "name": "Social Network Analysis",
+      "description": "Mapping and analysing relationships (who connects to whom, influence, information flow) to understand diffusion, support, and gatekeeping.",
+      "attributes": {
+        "sem_level": [
+          "Interpersonal",
+          "Community"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://www.betterevaluation.org/sites/default/files/PG_SNA.pdf"
+    },
+    {
+      "name": "Non-Digital Diaries/Journals",
+      "description": "Paper-based or offline diary entries captured at agreed intervals, useful where connectivity is limited or privacy risks are high.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "High",
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://researchonline.ljmu.ac.uk/id/eprint/8668/3/Using%20diaries%20to%20collect%20data%20in%20phenomenological%20research.pdf"
+    },
+    {
+      "name": "Most Significant Change",
+      "description": "Participatory story-based monitoring where stakeholders collect, select, and discuss the most significant change stories to interpret what matters and why.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "High",
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://www.intrac.org/app/uploads/2017/01/Most-significant-change.pdf"
+    },
+    {
+      "name": "Body Mapping",
+      "description": "Participants create life-size or schematic body outlines to discuss embodied experiences, safety, wellbeing, and identity in a structured, trauma-aware way.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "High",
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://opendocs.ids.ac.uk/opendocs/bitstream/handle/20.500.12413/13876/Body%20Mapping%20Toolkit.pdf"
+    },
+    {
+      "name": "Individual Interviews (Ad-hoc)",
+      "description": "One-off semi-structured or in-depth interviews to elicit detailed personal accounts, meanings, and decision processes.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "High",
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://nyhealthfoundation.org/wp-content/uploads/2019/02/m_e_tool_series_indepth_interviews-1.pdf"
+    },
+    {
+      "name": "Validated Measurement Scales (Psychometric/Attitudinal)",
+      "description": "Standardised, tested multi-item instruments (e.g., Likert-type attitude/self-efficacy scales) used to measure latent constructs with attention to validity and reliability.",
+      "attributes": {
+        "sem_level": [
+          "Individual"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Low"
+        ],
+        "participation": [],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "Medium"
+        ]
+      },
+      "link": "https://www.scielo.br/j/rmj/a/s5Z45jW68qJXgngNcttxLTx/?format=pdf&lang=en"
+    },
+    {
+      "name": "Cross-Sectional Surveys",
+      "description": "One-time (single round) survey snapshot used to estimate prevalence and explore associations at a point in time.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://cdn.who.int/media/docs/default-source/documents/ddi/score/tools/mics.docx?sfvrsn=b7eab5ef_3"
+    },
+    {
+      "name": "Service Journey Mapping",
+      "description": "Structured mapping of a user's pathway through services (steps, touchpoints, drop-offs) to diagnose friction and equity gaps.",
+      "attributes": {
+        "sem_level": [
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Inherently participatory",
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://www.nngroup.com/articles/journey-mapping-101/"
+    },
+    {
+      "name": "Focus Group Discussions",
+      "description": "Facilitated group conversations to explore norms, experiences, language, and reasons behind behaviours and choices.",
+      "attributes": {
+        "sem_level": [
+          "Interpersonal",
+          "Community"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "High",
+          "Medium"
+        ]
+      },
+      "link": "https://www.betterevaluation.org/sites/default/files/EA_PM%2526E_toolkit_module_3_methods_for_publication.pdf"
+    },
+    {
+      "name": "Administrative Data",
+      "description": "Routine programme/service records (registrations, case management, payments, attendance) repurposed for monitoring and analysis.",
+      "attributes": {
+        "sem_level": [
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Not participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "Low"
+        ]
+      },
+      "link": "https://www.intrac.org/app/uploads/2017/01/Quantitative-analysis.pdf"
+    },
+    {
+      "name": "Real-Time Polling (U-Report)",
+      "description": "Rapid SMS/WhatsApp/social polling that gathers near real-time feedback from enrolled users, often for programme adaptation and accountability.",
+      "attributes": {
+        "sem_level": [
+          "Individual",
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "Low"
+        ]
+      },
+      "link": "https://www.unicef.org/evaluation/media/1006/file/U-Report.pdf"
+    },
+    {
+      "name": "Community Resource Mapping/Audits",
+      "description": "Participatory mapping of local services/assets, access barriers, and quality/coverage gaps to support planning and accountability.",
+      "attributes": {
+        "sem_level": [
+          "Community"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "Low"
+        ]
+      },
+      "link": "https://www.betterevaluation.org/sites/default/files/Participatory_Approaches_ENG.pdf"
+    },
+    {
+      "name": "Policy Implementation Tracking",
+      "description": "Ongoing tracking of whether planned policy actions are adopted, financed, and executed, using structured indicators and evidence logs.",
+      "attributes": {
+        "sem_level": [
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium"
+        ],
+        "level_of_political_sensitivity": [
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "Low"
+        ]
+      },
+      "link": "https://www.betterevaluation.org/sites/default/files/14-WFP_-_How_to_manage_an_Evaluation_and_disseminate_its_Results.pdf"
+    },
+    {
+      "name": "Social Listening/Digital Traces",
+      "description": "Systematic collection and analysis of digital content (social media, forums, search patterns) to track narratives, sentiment, and misinformation risks.",
+      "attributes": {
+        "sem_level": [
+          "Interpersonal",
+          "Community",
+          "Institutional"
+        ],
+        "level_of_political_stability": [
+          "Stable",
+          "Fragile",
+          "Conflict Affected"
+        ],
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "financial_resources_available": [
+          "High",
+          "Medium"
+        ],
+        "human_resource_skills_available": [
+          "High",
+          "Medium"
+        ],
+        "participants_access_to_technology_eg_phones_internet": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "level_of_political_sensitivity": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "participation": [
+          "Potentially participatory"
+        ],
+        "potential_for_inclusion_of_marginalised_girls": [
+          "Medium"
+        ],
+        "potential_for_behavioural_insight_integration": [
+          "Low"
+        ]
+      },
+      "link": "https://www.greenbook.org/insights/research-methodologies/from-noise-to-insight-a-comprehensive-guide-to-social-media-listening"
+    }
+  ]
 }
