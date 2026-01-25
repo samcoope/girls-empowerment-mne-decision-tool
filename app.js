@@ -1029,7 +1029,7 @@ function downloadResults() {
       <!DOCTYPE html>
       <html>
       <head>
-          <title>Research Methodology Selection Results</title>
+          <title>M&E Methodology Selection Results - Adolescent Girls Empowerment</title>
           <style>
               body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
               h1, h2, h3 { color: #00629B; }
@@ -1045,7 +1045,7 @@ function downloadResults() {
           </style>
       </head>
       <body>
-          <h1>Research Methodology Selection Results</h1>
+          <h1>M&E Methodology Selection Results - Adolescent Girls Empowerment</h1>
           <div class="selection-summary">
               <h2>Your Selection Criteria</h2>
   `;
