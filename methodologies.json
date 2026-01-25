@@ -255,10 +255,13 @@
         ],
         "level_of_political_stability": [
           "Stable",
-          "Fragile"
+          "Fragile",
+          "Conflict Affected"
         ],
         "level_of_cultural_permissiveness": [
-          "Medium"
+          "Low",
+          "Medium",
+          "High"
         ],
         "financial_resources_available": [
           "High"
@@ -273,6 +276,7 @@
           "Low"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
@@ -302,10 +306,12 @@
         ],
         "level_of_political_stability": [
           "Stable",
-          "Fragile"
+          "Fragile",
+          "Conflict Affected"
         ],
         "level_of_cultural_permissiveness": [
-          "Medium"
+          "Medium",
+          "High"
         ],
         "financial_resources_available": [
           "High",
@@ -321,6 +327,7 @@
           "Low"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
@@ -398,11 +405,13 @@
         ],
         "level_of_political_stability": [
           "Stable",
-          "Fragile"
+          "Fragile",
+          "Conflict Affected"
         ],
         "level_of_cultural_permissiveness": [
           "Low",
-          "Medium"
+          "Medium",
+          "High"
         ],
         "financial_resources_available": [
           "High",
@@ -419,6 +428,7 @@
           "Low"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
@@ -554,7 +564,8 @@
         ],
         "level_of_cultural_permissiveness": [
           "Low",
-          "Medium"
+          "Medium",
+          "High"
         ],
         "financial_resources_available": [
           "High",
@@ -570,6 +581,7 @@
           "Low"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
@@ -600,11 +612,13 @@
         ],
         "level_of_political_stability": [
           "Stable",
-          "Fragile"
+          "Fragile",
+          "Conflict Affected"
         ],
         "level_of_cultural_permissiveness": [
           "Low",
-          "Medium"
+          "Medium",
+          "High"
         ],
         "financial_resources_available": [
           "High",
@@ -621,6 +635,7 @@
           "Low"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
@@ -964,6 +979,7 @@
           "Medium"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
@@ -988,11 +1004,13 @@
         ],
         "level_of_political_stability": [
           "Stable",
-          "Fragile"
+          "Fragile",
+          "Conflict Affected"
         ],
         "level_of_cultural_permissiveness": [
           "Low",
-          "Medium"
+          "Medium",
+          "High"
         ],
         "financial_resources_available": [
           "High",
@@ -1007,6 +1025,7 @@
           "Medium"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
