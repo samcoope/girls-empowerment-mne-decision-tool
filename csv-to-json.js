@@ -86,7 +86,7 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
         
         const method = {
             name: methodName,
-            description: `${methodName} methodology for adolescent girl empowerment research`,
+            description: '', // Will be filled from Description column or default
             attributes: {}
         };
 
@@ -100,12 +100,12 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
 
             // Handle Link column specially
             if (headerLower === 'link' || headerLower === 'url' || headerLower === 'reference') {
-                // Basic URL validation and formatting
-                if (value && (value.startsWith('http://') || value.startsWith('https://') || value.startsWith('www.'))) {
-                    method.link = value.startsWith('www.') ? `https://${value}` : value;
-                } else if (value) {
-                    // If it looks like it might be a URL but missing protocol, add https://
-                    if (value.includes('.') && !value.includes(' ')) {
+                // Basic URL validation and formatting - skip null/empty values
+                if (value && value !== 'null' && value.trim() !== '') {
+                    if (value.startsWith('http://') || value.startsWith('https://') || value.startsWith('www.')) {
+                        method.link = value.startsWith('www.') ? `https://${value}` : value;
+                    } else if (value.includes('.') && !value.includes(' ')) {
+                        // If it looks like it might be a URL but missing protocol, add https://
                         method.link = `https://${value}`;
                     }
                 }
@@ -138,8 +138,7 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
 
             // Handle Description column
             if (headerLower === 'description') {
-                if (value && value !== 'null') {
-                    // Override the auto-generated description with the CSV value
+                if (value && value !== 'null' && value.trim() !== '') {
                     method.description = value;
                 }
                 continue;
@@ -168,7 +167,12 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
                 }
             }
         }
-        
+
+        // Set default description if not provided in CSV
+        if (!method.description || method.description.trim() === '') {
+            method.description = `${methodName} methodology for adolescent girl empowerment research`;
+        }
+
         methods.push(method);
     }
     
@@ -190,6 +194,7 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
         console.log(`   - Categories: ${categories.length}`);
         console.log(`   - Methods: ${methods.length}`);
         console.log(`   - Methods with links: ${methods.filter(m => m.link).length}`);
+        console.log(`   - Methods with custom descriptions: ${methods.filter(m => !m.description.includes('methodology for adolescent girl empowerment research')).length}`);
         console.log(`   - Output file size: ${(fs.statSync(outputFile).size / 1024).toFixed(2)} KB`);
         
         // Show sample of what was created
@@ -197,6 +202,7 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
         if (methods.length > 0) {
             const sampleMethod = methods[0];
             console.log(`Name: ${sampleMethod.name}`);
+            console.log(`Description: ${sampleMethod.description.substring(0, 80)}${sampleMethod.description.length > 80 ? '...' : ''}`);
             if (sampleMethod.link) {
                 console.log(`Link: ${sampleMethod.link}`);
             }
