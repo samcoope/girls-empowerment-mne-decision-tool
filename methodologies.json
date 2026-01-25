@@ -20,12 +20,12 @@
       ]
     },
     {
-      "id": "level_of_cultural_permissiveness",
-      "name": "Level of Cultural Permissiveness",
+      "id": "level_of_cultural_restrictiveness",
+      "name": "Level of Cultural Restrictiveness",
       "options": [
-        "Low",
+        "High",
         "Medium",
-        "High"
+        "Low"
       ]
     },
     {
@@ -107,10 +107,10 @@
           "Stable",
           "Fragile"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -157,10 +157,10 @@
           "Stable",
           "Fragile"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -207,10 +207,10 @@
           "Stable",
           "Fragile"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -258,10 +258,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High"
@@ -309,9 +309,9 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Medium",
-          "High"
+        "level_of_cultural_restrictiveness": [
+          "High",
+          "Medium"
         ],
         "financial_resources_available": [
           "High",
@@ -360,10 +360,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -408,10 +408,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -460,7 +460,7 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
+        "level_of_cultural_restrictiveness": [
           "Medium"
         ],
         "financial_resources_available": [
@@ -509,10 +509,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -562,10 +562,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -615,10 +615,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -669,9 +669,9 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -718,9 +718,9 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -765,9 +765,9 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
         ],
         "financial_resources_available": [
           "High"
@@ -813,9 +813,9 @@
           "Stable",
           "Fragile"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
         ],
         "financial_resources_available": [
           "High"
@@ -860,10 +860,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -909,10 +909,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -960,9 +960,9 @@
           "Stable",
           "Fragile"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
+        "level_of_cultural_restrictiveness": [
+          "Medium",
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -1007,10 +1007,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -1052,10 +1052,10 @@
           "Stable",
           "Fragile"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
@@ -1100,10 +1100,10 @@
           "Fragile",
           "Conflict Affected"
         ],
-        "level_of_cultural_permissiveness": [
-          "Low",
+        "level_of_cultural_restrictiveness": [
+          "High",
           "Medium",
-          "High"
+          "Low"
         ],
         "financial_resources_available": [
           "High",
