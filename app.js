@@ -777,6 +777,11 @@ function updateResultsDisplay() {
     header.className = 'methodology-header';
     header.innerHTML = `<h3>${method.name}</h3>`;
 
+    // Create visible description preview
+    const descriptionPreview = document.createElement('div');
+    descriptionPreview.className = 'methodology-description-preview';
+    descriptionPreview.innerHTML = `<p>${method.description}</p>`;
+
     // Create method details
     const details = document.createElement('div');
     details.className = 'methodology-details';
@@ -798,11 +803,6 @@ function updateResultsDisplay() {
 
       details.appendChild(badgesDiv);
     }
-
-    // Add description
-    const descriptionP = document.createElement('p');
-    descriptionP.textContent = method.description;
-    details.appendChild(descriptionP);
 
     // Add mismatch info if present
     if (mismatches.length > 0) {
@@ -894,8 +894,9 @@ function updateResultsDisplay() {
 
     details.appendChild(showMoreBtn);
 
-    // Add header and details to the card
+    // Add header, description preview, and details to the card
     methodCard.appendChild(header);
+    methodCard.appendChild(descriptionPreview);
     methodCard.appendChild(details);
 
     // Toggle details when clicking on the header

@@ -243,6 +243,19 @@ button.secondary:hover {
     font-size: 1.1rem;
 }
 
+.methodology-description-preview {
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.methodology-description-preview p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
 .methodology-details {
     padding: 0;
     max-height: 0;
