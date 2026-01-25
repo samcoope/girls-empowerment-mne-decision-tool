@@ -95,7 +95,7 @@
   "methods": [
     {
       "name": "Quantitative Surveys (Digital/Online)",
-      "description": "Quantitative Surveys (Digital/Online) methodology for adolescent girl empowerment research",
+      "description": "Structured questionnaires administered via phones/web to generate comparable numeric estimates of outcomes and determinants.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -141,11 +141,11 @@
           "Medium"
         ]
       },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Surveys-and-questionnaires.pdf"
+      "link": "https://cdn.who.int/media/docs/default-source/documents/ddi/score/tools/mics.docx?sfvrsn=b7eab5ef_3"
     },
     {
       "name": "Individual Interviews (Longitudinal)",
-      "description": "Individual Interviews (Longitudinal) methodology for adolescent girl empowerment research",
+      "description": "Repeat interviews with the same participants over time to understand trajectories, turning points, and drivers of change.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -190,11 +190,12 @@
           "High",
           "Medium"
         ]
-      }
+      },
+      "link": "https://www.younglives.org.uk/sites/default/files/migrated/TN26-qualitative-guide-for-researchers.pdf"
     },
     {
       "name": "Quantitative Surveys (Longitudinal)",
-      "description": "Quantitative Surveys (Longitudinal) methodology for adolescent girl empowerment research",
+      "description": "Repeated survey waves (panel/cohort) to measure change over time and relate it to exposure, events, or implementation shifts.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -239,88 +240,12 @@
           "High",
           "Medium"
         ]
-      }
-    },
-    {
-      "name": "Institutional Ethnography",
-      "description": "Institutional Ethnography methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Inherently participatory",
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      }
-    },
-    {
-      "name": "Gender-Responsive Budget Audits",
-      "description": "Gender-Responsive Budget Audits methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium"
-        ],
-        "level_of_political_sensitivity": [
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": []
-      }
+      },
+      "link": "https://www.betterevaluation.org/tools-resources/tracking-displaced-people-mali"
     },
     {
       "name": "Photovoice",
-      "description": "Photovoice methodology for adolescent girl empowerment research",
+      "description": "Participants use photography plus facilitated discussion/captioning to document experiences and communicate priorities to decision-makers.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -362,11 +287,11 @@
           "Medium"
         ]
       },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Photography-and-video.pdf"
+      "link": "https://www.betterevaluation.org/tools-resources/see-it-our-way-participatory-photography-tool-for-advocacy"
     },
     {
-      "name": "Participatory Video",
-      "description": "Participatory Video methodology for adolescent girl empowerment research",
+      "name": "Participatory Video/Digital Storytelling",
+      "description": "Participants create short films or digital stories to express priorities and document change, supported by facilitation and ethical safeguards.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -408,54 +333,11 @@
           "Medium"
         ]
       },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Photography-and-video.pdf"
-    },
-    {
-      "name": "Participatory Mapping",
-      "description": "Participatory Mapping methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Community"
-        ],
-        "level_of_political_stability": [
-          "Stable"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Inherently participatory",
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Participatory-learning-and-action.pdf"
+      "link": "https://www.betterevaluation.org/sites/default/files/Insights_into_Participatory_Video_-_A_Handbook_for_the_Field_%2528English%2529%25281%2529.pdf"
     },
     {
       "name": "Digital Diaries/Journals",
-      "description": "Digital Diaries/Journals methodology for adolescent girl empowerment research",
+      "description": "Participants submit time-ordered entries (text/audio/photo) via phones/apps to capture experiences as they happen and reduce recall bias.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -500,11 +382,12 @@
         "potential_for_behavioural_insight_integration": [
           "High"
         ]
-      }
+      },
+      "link": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2022/02/Diary-Studies-Working-Paper.pdf"
     },
     {
       "name": "Storytelling Circles",
-      "description": "Storytelling Circles methodology for adolescent girl empowerment research",
+      "description": "Small-group story-sharing with agreed prompts and facilitation to surface lived experience, sense-making, and collective reflection.",
       "attributes": {
         "sem_level": [
           "Interpersonal",
@@ -547,11 +430,12 @@
           "High",
           "Medium"
         ]
-      }
+      },
+      "link": "https://storycenter.org/storytelling-circle"
     },
     {
       "name": "Social Network Analysis",
-      "description": "Social Network Analysis methodology for adolescent girl empowerment research",
+      "description": "Mapping and analysing relationships (who connects to whom, influence, information flow) to understand diffusion, support, and gatekeeping.",
       "attributes": {
         "sem_level": [
           "Interpersonal",
@@ -593,61 +477,11 @@
           "Medium"
         ]
       },
-      "link": "https://www.intrac.org/wpcms/wp-content/uploads/2019/05/Social-network-analysis.pdf"
-    },
-    {
-      "name": "Digital Storytelling",
-      "description": "Digital Storytelling methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Individual",
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium",
-          "High"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "human_resource_skills_available": [
-          "High",
-          "Medium"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium"
-        ],
-        "level_of_political_sensitivity": [
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Inherently participatory",
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "High",
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      }
+      "link": "https://www.betterevaluation.org/sites/default/files/PG_SNA.pdf"
     },
     {
       "name": "Non-Digital Diaries/Journals",
-      "description": "Non-Digital Diaries/Journals methodology for adolescent girl empowerment research",
+      "description": "Paper-based or offline diary entries captured at agreed intervals, useful where connectivity is limited or privacy risks are high.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -695,11 +529,12 @@
           "High",
           "Medium"
         ]
-      }
+      },
+      "link": "https://researchonline.ljmu.ac.uk/id/eprint/8668/3/Using%20diaries%20to%20collect%20data%20in%20phenomenological%20research.pdf"
     },
     {
       "name": "Most Significant Change",
-      "description": "Most Significant Change methodology for adolescent girl empowerment research",
+      "description": "Participatory story-based monitoring where stakeholders collect, select, and discuss the most significant change stories to interpret what matters and why.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -746,11 +581,11 @@
           "Medium"
         ]
       },
-      "link": "https://www.intrac.org/wpcms/wp-content/uploads/2017/01/Most-significant-change.pdf"
+      "link": "https://www.intrac.org/app/uploads/2017/01/Most-significant-change.pdf"
     },
     {
       "name": "Body Mapping",
-      "description": "Body Mapping methodology for adolescent girl empowerment research",
+      "description": "Participants create life-size or schematic body outlines to discuss embodied experiences, safety, wellbeing, and identity in a structured, trauma-aware way.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -796,11 +631,12 @@
           "High",
           "Medium"
         ]
-      }
+      },
+      "link": "https://opendocs.ids.ac.uk/opendocs/bitstream/handle/20.500.12413/13876/Body%20Mapping%20Toolkit.pdf"
     },
     {
       "name": "Individual Interviews (Ad-hoc)",
-      "description": "Individual Interviews (Ad-hoc) methodology for adolescent girl empowerment research",
+      "description": "One-off semi-structured or in-depth interviews to elicit detailed personal accounts, meanings, and decision processes.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -847,102 +683,12 @@
           "High",
           "Medium"
         ]
-      }
+      },
+      "link": "https://nyhealthfoundation.org/wp-content/uploads/2019/02/m_e_tool_series_indepth_interviews-1.pdf"
     },
     {
-      "name": "Institutional Journey Mapping",
-      "description": "Institutional Journey Mapping methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      }
-    },
-    {
-      "name": "Life History Narratives",
-      "description": "Life History Narratives methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Individual",
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "High",
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      }
-    },
-    {
-      "name": "Quantitative Scales",
-      "description": "Quantitative Scales methodology for adolescent girl empowerment research",
+      "name": "Validated Measurement Scales (Psychometric/Attitudinal)",
+      "description": "Standardised, tested multi-item instruments (e.g., Likert-type attitude/self-efficacy scales) used to measure latent constructs with attention to validity and reliability.",
       "attributes": {
         "sem_level": [
           "Individual"
@@ -980,106 +726,12 @@
         "potential_for_behavioural_insight_integration": [
           "Medium"
         ]
-      }
-    },
-    {
-      "name": "Critical Incident Techniques",
-      "description": "Critical Incident Techniques methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Individual",
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Inherently participatory",
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "High",
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      }
-    },
-    {
-      "name": "Social Network Analysis",
-      "description": "Social Network Analysis methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile",
-          "Conflict Affected"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Inherently participatory",
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      }
+      },
+      "link": "https://www.scielo.br/j/rmj/a/s5Z45jW68qJXgngNcttxLTx/?format=pdf&lang=en"
     },
     {
       "name": "Cross-Sectional Surveys",
-      "description": "Cross-Sectional Surveys methodology for adolescent girl empowerment research",
+      "description": "One-time (single round) survey snapshot used to estimate prevalence and explore associations at a point in time.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -1123,11 +775,11 @@
           "Medium"
         ]
       },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Surveys-and-questionnaires.pdf"
+      "link": "https://cdn.who.int/media/docs/default-source/documents/ddi/score/tools/mics.docx?sfvrsn=b7eab5ef_3"
     },
     {
       "name": "Service Journey Mapping",
-      "description": "Service Journey Mapping methodology for adolescent girl empowerment research",
+      "description": "Structured mapping of a user's pathway through services (steps, touchpoints, drop-offs) to diagnose friction and equity gaps.",
       "attributes": {
         "sem_level": [
           "Interpersonal",
@@ -1168,56 +820,12 @@
           "High",
           "Medium"
         ]
-      }
-    },
-    {
-      "name": "Social Network Analysis",
-      "description": "Social Network Analysis methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile",
-          "Conflict Affected"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
       },
-      "link": "https://www.intrac.org/wpcms/wp-content/uploads/2019/05/Social-network-analysis.pdf"
+      "link": "https://msktc.org/sites/default/files/Journey-Map-Guide-508.pdf"
     },
     {
       "name": "Focus Group Discussions",
-      "description": "Focus Group Discussions methodology for adolescent girl empowerment research",
+      "description": "Facilitated group conversations to explore norms, experiences, language, and reasons behind behaviours and choices.",
       "attributes": {
         "sem_level": [
           "Interpersonal",
@@ -1263,157 +871,11 @@
           "Medium"
         ]
       },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Focus-group-discussions.pdf"
-    },
-    {
-      "name": "Intergenerational Dialogues",
-      "description": "Intergenerational Dialogues methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High",
-          "Medium"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Inherently participatory",
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      }
-    },
-    {
-      "name": "Quantitative Surveys (individual, in-person, ad-hoc)",
-      "description": "Quantitative Surveys (individual, in-person, ad-hoc) methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High",
-          "Medium"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "High",
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Surveys-and-questionnaires.pdf"
-    },
-    {
-      "name": "Quantitative Household Surveys (ad-hoc)",
-      "description": "Quantitative Household Surveys (ad-hoc) methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium",
-          "High"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High",
-          "Medium"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      },
-      "link": "https://www.intrac.org/app/uploads/2017/01/Surveys-and-questionnaires.pdf"
+      "link": "https://www.betterevaluation.org/sites/default/files/EA_PM%2526E_toolkit_module_3_methods_for_publication.pdf"
     },
     {
       "name": "Administrative Data",
-      "description": "Administrative Data methodology for adolescent girl empowerment research",
+      "description": "Routine programme/service records (registrations, case management, payments, attendance) repurposed for monitoring and analysis.",
       "attributes": {
         "sem_level": [
           "Institutional"
@@ -1457,11 +919,12 @@
         "potential_for_behavioural_insight_integration": [
           "Low"
         ]
-      }
+      },
+      "link": "https://www.intrac.org/app/uploads/2017/01/Quantitative-analysis.pdf"
     },
     {
-      "name": "Real-Time Polling (e.g. U-Report)",
-      "description": "Real-Time Polling (e.g. U-Report) methodology for adolescent girl empowerment research",
+      "name": "Real-Time Polling (U-Report)",
+      "description": "Rapid SMS/WhatsApp/social polling that gathers near real-time feedback from enrolled users, often for programme adaptation and accountability.",
       "attributes": {
         "sem_level": [
           "Individual",
@@ -1504,56 +967,12 @@
         "potential_for_behavioural_insight_integration": [
           "Low"
         ]
-      }
-    },
-    {
-      "name": "Quantitative Content Analysis",
-      "description": "Quantitative Content Analysis methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium",
-          "High"
-        ],
-        "financial_resources_available": [
-          "High",
-          "Medium"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "Low"
-        ]
-      }
+      },
+      "link": "https://www.unicef.org/evaluation/media/1006/file/U-Report.pdf"
     },
     {
       "name": "Community Resource Mapping/Audits",
-      "description": "Community Resource Mapping/Audits methodology for adolescent girl empowerment research",
+      "description": "Participatory mapping of local services/assets, access barriers, and quality/coverage gaps to support planning and accountability.",
       "attributes": {
         "sem_level": [
           "Community"
@@ -1590,11 +1009,12 @@
         "potential_for_behavioural_insight_integration": [
           "Low"
         ]
-      }
+      },
+      "link": "https://www.betterevaluation.org/sites/default/files/Participatory_Approaches_ENG.pdf"
     },
     {
       "name": "Policy Implementation Tracking",
-      "description": "Policy Implementation Tracking methodology for adolescent girl empowerment research",
+      "description": "Ongoing tracking of whether planned policy actions are adopted, financed, and executed, using structured indicators and evidence logs.",
       "attributes": {
         "sem_level": [
           "Institutional"
@@ -1633,107 +1053,12 @@
         "potential_for_behavioural_insight_integration": [
           "Low"
         ]
-      }
-    },
-    {
-      "name": "Outcome Mapping",
-      "description": "Outcome Mapping methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile",
-          "Conflict Affected"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium",
-          "High"
-        ],
-        "financial_resources_available": [
-          "High"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "High",
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
       },
-      "link": "https://www.intrac.org/app/uploads/2016/06/Monitoring-and-Evaluation-Series-Outcome-Mapping-14.pdf"
-    },
-    {
-      "name": "Outcome Harvesting",
-      "description": "Outcome Harvesting methodology for adolescent girl empowerment research",
-      "attributes": {
-        "sem_level": [
-          "Interpersonal",
-          "Community",
-          "Institutional"
-        ],
-        "level_of_political_stability": [
-          "Stable",
-          "Fragile",
-          "Conflict Affected"
-        ],
-        "level_of_cultural_permissiveness": [
-          "Low",
-          "Medium",
-          "High"
-        ],
-        "financial_resources_available": [
-          "High"
-        ],
-        "human_resource_skills_available": [
-          "High"
-        ],
-        "participants_access_to_technology_eg_phones_internet": [
-          "High",
-          "Medium"
-        ],
-        "level_of_political_sensitivity": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "participation": [
-          "Potentially participatory"
-        ],
-        "potential_for_inclusion_of_marginalised_girls": [
-          "High",
-          "Medium"
-        ],
-        "potential_for_behavioural_insight_integration": [
-          "High",
-          "Medium"
-        ]
-      },
-      "link": "https://www.intrac.org/app/uploads/2024/12/Outcome-harvesting.pdf"
+      "link": "https://www.betterevaluation.org/sites/default/files/14-WFP_-_How_to_manage_an_Evaluation_and_disseminate_its_Results.pdf"
     },
     {
       "name": "Social Listening/Digital Traces",
-      "description": "Social Listening/Digital Traces methodology for adolescent girl empowerment research",
+      "description": "Systematic collection and analysis of digital content (social media, forums, search patterns) to track narratives, sentiment, and misinformation risks.",
       "attributes": {
         "sem_level": [
           "Interpersonal",
@@ -1777,7 +1102,8 @@
         "potential_for_behavioural_insight_integration": [
           "Low"
         ]
-      }
+      },
+      "link": "https://dev.sbcguidance.org/sites/default/files/2023-04/4-1-2%20Do-Social%20listening.pdf"
     }
   ]
 }
