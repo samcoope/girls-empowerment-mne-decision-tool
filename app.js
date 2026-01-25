@@ -1,3 +1,11 @@
+// SEM Level definitions for tooltips
+const SEM_LEVEL_DEFINITIONS = {
+  'Individual': 'Changes in a girl\'s knowledge, skills, attitudes, agency, wellbeing, or behaviours.',
+  'Interpersonal': 'Changes in relationships and interactions (family, peers, partners, mentors).',
+  'Community': 'Changes in norms, practices, collective safety, and local opportunity structures.',
+  'Institutional': 'Changes in policies, services, rules, budgets, and organisational practice.'
+};
+
 // State to store user selections and data
 let state = {
   methodsData: null,
@@ -190,13 +198,20 @@ function updateStepContent(stepNumber, group) {
       category.options.forEach(option => {
           const checkboxItem = document.createElement('div');
           checkboxItem.className = 'checkbox-item';
+
+          // Add tooltip for SEM level options
+          const tooltip = (category.id === 'sem_level' && SEM_LEVEL_DEFINITIONS[option])
+            ? `<span class="tooltip">?<span class="tooltiptext">${SEM_LEVEL_DEFINITIONS[option]}</span></span>`
+            : '';
+
           checkboxItem.innerHTML = `
               <label>
                   <input type="checkbox" data-category="${category.id}" data-option="${option}">
                   <span>${option}</span>
+                  ${tooltip}
               </label>
           `;
-          
+
           checkboxGrid.appendChild(checkboxItem);
       });
       
@@ -291,13 +306,20 @@ function createStepContent(stepNumber, group) {
       category.options.forEach(option => {
           const checkboxItem = document.createElement('div');
           checkboxItem.className = 'checkbox-item';
+
+          // Add tooltip for SEM level options
+          const tooltip = (category.id === 'sem_level' && SEM_LEVEL_DEFINITIONS[option])
+            ? `<span class="tooltip">?<span class="tooltiptext">${SEM_LEVEL_DEFINITIONS[option]}</span></span>`
+            : '';
+
           checkboxItem.innerHTML = `
               <label>
                   <input type="checkbox" data-category="${category.id}" data-option="${option}">
                   <span>${option}</span>
+                  ${tooltip}
               </label>
           `;
-          
+
           checkboxGrid.appendChild(checkboxItem);
       });
       
