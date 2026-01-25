@@ -796,7 +796,13 @@ function updateResultsDisplay() {
     if (method.link) {
       const linkDiv = document.createElement('div');
       linkDiv.className = 'method-link';
-      linkDiv.innerHTML = `<a href="${method.link}" target="_blank">Learn more →</a>`;
+      linkDiv.innerHTML = `
+        <div class="link-label">📚 Implementation Guide:</div>
+        <a href="${method.link}" target="_blank" rel="noopener noreferrer">
+          ${method.link.length > 60 ? method.link.substring(0, 60) + '...' : method.link}
+          <span class="external-icon">↗</span>
+        </a>
+      `;
       details.appendChild(linkDiv);
     }
 
@@ -1030,6 +1036,9 @@ function downloadResults() {
               .selection-summary { margin-bottom: 20px; }
               .method-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
               .method-card h3 { margin-top: 0; color: #00629B; }
+              .method-card p { margin: 10px 0; }
+              .method-card a { color: #5b92e5; text-decoration: none; word-break: break-all; }
+              .method-card a:hover { text-decoration: underline; }
               .attributes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 15px; }
               .attribute-item { background-color: #f5f5f5; padding: 8px; border-radius: 3px; }
               .attribute-name { font-weight: bold; }
@@ -1060,9 +1069,17 @@ function downloadResults() {
           <div class="method-card">
               <h3>${method.name}</h3>
               <p>${method.description}</p>
-              <div class="attributes-grid">
       `;
-      
+
+      // Add link if available
+      if (method.link) {
+          htmlContent += `
+              <p><strong>📚 Implementation Guide:</strong> <a href="${method.link}" target="_blank">${method.link}</a></p>
+          `;
+      }
+
+      htmlContent += `<div class="attributes-grid">`;
+
       // Add all attributes
       for (const catId in method.attributes) {
           const category = state.categories.find(c => c.id === catId);
@@ -1076,7 +1093,7 @@ function downloadResults() {
               `;
           }
       }
-      
+
       htmlContent += `
               </div>
           </div>

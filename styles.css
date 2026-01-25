@@ -602,8 +602,19 @@ button.secondary:hover {
 
 /* Method link */
 .method-link {
-    margin-top: 12px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: #f0f7ff;
+    border-left: 3px solid #5b92e5;
+    border-radius: 4px;
+}
+
+.link-label {
+    font-weight: 600;
+    color: #00629B;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
 }
 
 .method-link a {
@@ -613,11 +624,18 @@ button.secondary:hover {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    word-break: break-all;
+    line-height: 1.4;
 }
 
 .method-link a:hover {
     color: #004d7a;
     text-decoration: underline;
+}
+
+.external-icon {
+    font-size: 0.85rem;
+    margin-left: 3px;
 }
 
 /* Responsive styles */
