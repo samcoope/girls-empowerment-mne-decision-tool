@@ -814,18 +814,38 @@ function updateResultsDisplay() {
       details.appendChild(mismatchDiv);
     }
 
-    // Add link if available
-    if (method.link) {
-      const linkDiv = document.createElement('div');
-      linkDiv.className = 'method-link';
-      linkDiv.innerHTML = `
-        <div class="link-label">📚 Implementation Guide:</div>
-        <a href="${method.link}" target="_blank" rel="noopener noreferrer">
-          ${method.link.length > 60 ? method.link.substring(0, 60) + '...' : method.link}
-          <span class="external-icon">↗</span>
-        </a>
-      `;
-      details.appendChild(linkDiv);
+    // Add links if available
+    if (method.link || method.link2) {
+      const linksDiv = document.createElement('div');
+      linksDiv.className = 'method-links';
+
+      if (method.link) {
+        const linkDiv = document.createElement('div');
+        linkDiv.className = 'method-link';
+        linkDiv.innerHTML = `
+          <div class="link-label">📚 Implementation Guide${method.link2 ? ' 1' : ''}:</div>
+          <a href="${method.link}" target="_blank" rel="noopener noreferrer">
+            ${method.link.length > 60 ? method.link.substring(0, 60) + '...' : method.link}
+            <span class="external-icon">↗</span>
+          </a>
+        `;
+        linksDiv.appendChild(linkDiv);
+      }
+
+      if (method.link2) {
+        const link2Div = document.createElement('div');
+        link2Div.className = 'method-link';
+        link2Div.innerHTML = `
+          <div class="link-label">📚 Implementation Guide 2:</div>
+          <a href="${method.link2}" target="_blank" rel="noopener noreferrer">
+            ${method.link2.length > 60 ? method.link2.substring(0, 60) + '...' : method.link2}
+            <span class="external-icon">↗</span>
+          </a>
+        `;
+        linksDiv.appendChild(link2Div);
+      }
+
+      details.appendChild(linksDiv);
     }
 
     // Create criteria grid
@@ -1094,10 +1114,15 @@ function downloadResults() {
               <p>${method.description}</p>
       `;
 
-      // Add link if available
+      // Add links if available
       if (method.link) {
           htmlContent += `
-              <p><strong>📚 Implementation Guide:</strong> <a href="${method.link}" target="_blank">${method.link}</a></p>
+              <p><strong>📚 Implementation Guide${method.link2 ? ' 1' : ''}:</strong> <a href="${method.link}" target="_blank">${method.link}</a></p>
+          `;
+      }
+      if (method.link2) {
+          htmlContent += `
+              <p><strong>📚 Implementation Guide 2:</strong> <a href="${method.link2}" target="_blank">${method.link2}</a></p>
           `;
       }
 

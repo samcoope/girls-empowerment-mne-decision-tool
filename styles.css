@@ -631,10 +631,17 @@ button.secondary:hover {
     color: #856404;
 }
 
-/* Method link */
-.method-link {
+/* Method links container */
+.method-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+/* Method link */
+.method-link {
     padding: 12px;
     background-color: #f0f7ff;
     border-left: 3px solid #5b92e5;

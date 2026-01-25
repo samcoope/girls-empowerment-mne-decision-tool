@@ -112,6 +112,20 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
                 continue;
             }
 
+            // Handle Link2 column specially
+            if (headerLower === 'link2') {
+                // Basic URL validation and formatting - skip null/empty values
+                if (value && value !== 'null' && value.trim() !== '') {
+                    if (value.startsWith('http://') || value.startsWith('https://') || value.startsWith('www.')) {
+                        method.link2 = value.startsWith('www.') ? `https://${value}` : value;
+                    } else if (value.includes('.') && !value.includes(' ')) {
+                        // If it looks like it might be a URL but missing protocol, add https://
+                        method.link2 = `https://${value}`;
+                    }
+                }
+                continue;
+            }
+
             // Handle Cost Tier column
             if (headerLower === 'cost tier') {
                 if (value && value !== 'null') {
