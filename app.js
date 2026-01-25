@@ -657,7 +657,8 @@ function groupMethodsByFit() {
     return groups;
   }
 
-  state.filteredMethods.forEach(method => {
+  // Evaluate ALL methods (not just filtered ones) to find near-matches
+  state.methodsData.methods.forEach(method => {
     let mismatches = [];
 
     // Check each user selection against method
@@ -695,6 +696,20 @@ function groupMethodsByFit() {
       });
     }
   });
+
+  // Only include alternatives if bestFit has fewer than 4 methods
+  if (groups.bestFit.length >= 4) {
+    groups.goodAlternatives = [];
+    groups.stretchOptions = [];
+  } else {
+    // Limit goodAlternatives to bring total to 4 (or max 4 alternatives)
+    const slotsAvailable = 4 - groups.bestFit.length;
+    if (groups.goodAlternatives.length > slotsAvailable) {
+      groups.goodAlternatives = groups.goodAlternatives.slice(0, slotsAvailable);
+    }
+    // Don't show stretch options if we're showing alternatives
+    groups.stretchOptions = [];
+  }
 
   return groups;
 }
@@ -782,6 +797,23 @@ function updateResultsDisplay() {
     descriptionPreview.className = 'methodology-description-preview';
     descriptionPreview.innerHTML = `<p>${method.description}</p>`;
 
+    // Create mismatch info banner (shown before "View More" button for visibility)
+    let mismatchBanner = null;
+    if (mismatches.length > 0) {
+      mismatchBanner = document.createElement('div');
+      mismatchBanner.className = 'mismatch-info';
+
+      if (mismatches.length === 1) {
+        const m = mismatches[0];
+        const methodValuesText = m.methodHas.length > 0 ? m.methodHas.join(', ') : 'None';
+        mismatchBanner.innerHTML = `<strong>⚠️ Alternative:</strong> This method is categorized as <strong>${methodValuesText}</strong> for ${m.category}, which differs from your selection.`;
+      } else {
+        mismatchBanner.innerHTML = '<strong>⚠️ Note:</strong> This method differs in: ';
+        const mismatchText = mismatches.map(m => m.category).join(', ');
+        mismatchBanner.innerHTML += mismatchText;
+      }
+    }
+
     // Create "View More" toggle button
     const viewMoreBtn = document.createElement('button');
     viewMoreBtn.className = 'view-more-toggle-btn';
@@ -807,16 +839,6 @@ function updateResultsDisplay() {
       }
 
       details.appendChild(badgesDiv);
-    }
-
-    // Add mismatch info if present
-    if (mismatches.length > 0) {
-      const mismatchDiv = document.createElement('div');
-      mismatchDiv.className = 'mismatch-info';
-      mismatchDiv.innerHTML = '<strong>Note:</strong> This method differs in: ';
-      const mismatchText = mismatches.map(m => m.category).join(', ');
-      mismatchDiv.innerHTML += mismatchText;
-      details.appendChild(mismatchDiv);
     }
 
     // Add links if available
@@ -919,9 +941,12 @@ function updateResultsDisplay() {
 
     details.appendChild(showMoreBtn);
 
-    // Add header, description preview, button, and details to the card
+    // Add header, description preview, mismatch banner (if any), button, and details to the card
     methodCard.appendChild(header);
     methodCard.appendChild(descriptionPreview);
+    if (mismatchBanner) {
+      methodCard.appendChild(mismatchBanner);
+    }
     methodCard.appendChild(viewMoreBtn);
     methodCard.appendChild(details);
 
@@ -968,7 +993,16 @@ function updateResultsDisplay() {
   if (groups.goodAlternatives.length > 0) {
     const alternativesSection = document.createElement('div');
     alternativesSection.className = 'tier-section alternatives-section';
-    alternativesSection.innerHTML = `<h3 class="tier-header">🔸 Good Alternatives (${groups.goodAlternatives.length} ${groups.goodAlternatives.length === 1 ? 'method' : 'methods'})</h3>`;
+
+    const headerText = groups.bestFit.length < 4
+      ? `🔸 Alternative Methods (${groups.goodAlternatives.length} ${groups.goodAlternatives.length === 1 ? 'method' : 'methods'})`
+      : `🔸 Good Alternatives (${groups.goodAlternatives.length} ${groups.goodAlternatives.length === 1 ? 'method' : 'methods'})`;
+
+    const descriptionText = groups.bestFit.length < 4
+      ? `<p style="margin: 10px 0 15px 0; font-size: 0.9rem; color: #555;">These methods nearly match your criteria - each differs on just one filter.</p>`
+      : '';
+
+    alternativesSection.innerHTML = `<h3 class="tier-header">${headerText}</h3>${descriptionText}`;
 
     groups.goodAlternatives.forEach(methodData => {
       alternativesSection.appendChild(createMethodCard(methodData));
@@ -990,11 +1024,25 @@ function updateResultsDisplay() {
     resultsContainer.appendChild(stretchSection);
   }
 
-  // If no methods in any category (shouldn't happen, but just in case)
+  // If no methods in any category
   if (groups.bestFit.length === 0 && groups.goodAlternatives.length === 0 && groups.stretchOptions.length === 0) {
     resultsContainer.innerHTML = `
-      <div class="no-results">No methods match all constraints. Consider these alternatives:</div>
+      <div class="no-results">
+        <p>No methods match all of your criteria.</p>
+        <p>Try adjusting your selections to see more options.</p>
+      </div>
     `;
+  }
+
+  // If we only have alternatives (no best fit), add an explanatory note
+  if (groups.bestFit.length === 0 && groups.goodAlternatives.length > 0) {
+    const noteDiv = document.createElement('div');
+    noteDiv.className = 'context-summary';
+    noteDiv.innerHTML = `
+      <h3>No Perfect Matches</h3>
+      <p>No methods match all your selected criteria. The alternatives below each differ on just one filter.</p>
+    `;
+    resultsContainer.insertBefore(noteDiv, resultsContainer.firstChild);
   }
 }
 
