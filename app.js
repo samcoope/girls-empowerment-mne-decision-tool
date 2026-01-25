@@ -152,7 +152,7 @@ function groupCategoriesByTheme() {
           name: "Operating Context",
           categories: [
               state.categories.find(cat => cat.id === "level_of_political_stability"),
-              state.categories.find(cat => cat.id === "level_of_cultural_permissiveness"),
+              state.categories.find(cat => cat.id === "level_of_cultural_restrictiveness"),
               state.categories.find(cat => cat.id === "level_of_political_sensitivity"),
               state.categories.find(cat => cat.id === "participants_access_to_technology_eg_phones_internet")
           ]
@@ -558,8 +558,8 @@ function generateContextSummary() {
     contextParts.push(`${selections.level_of_political_stability.join(' or ').toLowerCase()} political conditions`);
   }
 
-  if (selections.level_of_cultural_permissiveness && selections.level_of_cultural_permissiveness.length > 0) {
-    contextParts.push(`${selections.level_of_cultural_permissiveness.join(' or ').toLowerCase()} cultural permissiveness`);
+  if (selections.level_of_cultural_restrictiveness && selections.level_of_cultural_restrictiveness.length > 0) {
+    contextParts.push(`${selections.level_of_cultural_restrictiveness.join(' or ').toLowerCase()} cultural restrictiveness`);
   }
 
   if (selections.level_of_political_sensitivity && selections.level_of_political_sensitivity.length > 0) {
