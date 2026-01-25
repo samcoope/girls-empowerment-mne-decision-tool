@@ -6,6 +6,40 @@ const SEM_LEVEL_DEFINITIONS = {
   'Institutional': 'Changes in policies, services, rules, budgets, and organisational practice.'
 };
 
+// Context and resource definitions for tooltips
+const CATEGORY_DEFINITIONS = {
+  'level_of_political_stability': {
+    'Stable': 'Functioning state institutions, predictable governance, low risk of major disruption to programme delivery.',
+    'Fragile': 'Weak institutions, uncertain political transitions, or governance gaps that may affect programme continuity.',
+    'Conflict Affected': 'Active armed conflict, displacement, breakdown of services, or post-conflict recovery setting.'
+  },
+  'level_of_political_sensitivity': {
+    'High': 'Topics likely to attract government scrutiny, require special permissions, or pose risks to participants or staff.',
+    'Medium': 'Some government interest or monitoring possible, but generally manageable with standard protocols.',
+    'Low': 'Little political attention or risk; methods can be implemented with standard safeguards.'
+  },
+  'level_of_cultural_restrictiveness': {
+    'High': 'Strong norms limit girls\' mobility, visibility, or voice in public/mixed settings; methods must be highly adaptive.',
+    'Medium': 'Some cultural constraints exist but can be navigated with community engagement and trust-building.',
+    'Low': 'Few cultural barriers to girls\' participation; methods can be implemented with minimal adaptation.'
+  },
+  'financial_resources_available': {
+    'High': 'Sufficient budget for specialist staff, technology, travel, incentives, and intensive data collection.',
+    'Medium': 'Moderate budget; can support core activities but requires cost-conscious choices.',
+    'Low': 'Limited budget; methods must rely on existing staff, low-cost materials, and minimal technology.'
+  },
+  'human_resource_skills_available': {
+    'High': 'Access to trained researchers, data analysts, or specialists with relevant technical expertise.',
+    'Medium': 'Programme staff with some M&E experience; may need light training or external support for complex methods.',
+    'Low': 'Limited M&E experience; methods must be straightforward and rely on basic facilitation skills.'
+  },
+  'participants_access_to_technology_eg_phones_internet': {
+    'High': 'Most participants own smartphones with reliable internet access.',
+    'Medium': 'Mixed access; some have phones or can access internet at hubs, but not universal.',
+    'Low': 'Limited phone ownership, poor connectivity, or low digital literacy; methods must work offline.'
+  }
+};
+
 // State to store user selections and data
 let state = {
   methodsData: null,
@@ -199,9 +233,16 @@ function updateStepContent(stepNumber, group) {
           const checkboxItem = document.createElement('div');
           checkboxItem.className = 'checkbox-item';
 
-          // Add tooltip for SEM level options
-          const tooltip = (category.id === 'sem_level' && SEM_LEVEL_DEFINITIONS[option])
-            ? `<span class="tooltip">?<span class="tooltiptext">${SEM_LEVEL_DEFINITIONS[option]}</span></span>`
+          // Add tooltip for options with definitions
+          let tooltipText = '';
+          if (category.id === 'sem_level' && SEM_LEVEL_DEFINITIONS[option]) {
+            tooltipText = SEM_LEVEL_DEFINITIONS[option];
+          } else if (CATEGORY_DEFINITIONS[category.id] && CATEGORY_DEFINITIONS[category.id][option]) {
+            tooltipText = CATEGORY_DEFINITIONS[category.id][option];
+          }
+
+          const tooltip = tooltipText
+            ? `<span class="tooltip">?<span class="tooltiptext">${tooltipText}</span></span>`
             : '';
 
           checkboxItem.innerHTML = `
@@ -307,9 +348,16 @@ function createStepContent(stepNumber, group) {
           const checkboxItem = document.createElement('div');
           checkboxItem.className = 'checkbox-item';
 
-          // Add tooltip for SEM level options
-          const tooltip = (category.id === 'sem_level' && SEM_LEVEL_DEFINITIONS[option])
-            ? `<span class="tooltip">?<span class="tooltiptext">${SEM_LEVEL_DEFINITIONS[option]}</span></span>`
+          // Add tooltip for options with definitions
+          let tooltipText = '';
+          if (category.id === 'sem_level' && SEM_LEVEL_DEFINITIONS[option]) {
+            tooltipText = SEM_LEVEL_DEFINITIONS[option];
+          } else if (CATEGORY_DEFINITIONS[category.id] && CATEGORY_DEFINITIONS[category.id][option]) {
+            tooltipText = CATEGORY_DEFINITIONS[category.id][option];
+          }
+
+          const tooltip = tooltipText
+            ? `<span class="tooltip">?<span class="tooltiptext">${tooltipText}</span></span>`
             : '';
 
           checkboxItem.innerHTML = `
