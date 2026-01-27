@@ -785,46 +785,9 @@ function updateResultsDisplay() {
       <p>${contextSummary}</p>
     `;
     resultsContainer.appendChild(summaryDiv);
-
-    // 2. Add decision trace
-    const trace = generateDecisionTrace();
-    if (trace.length > 1) { // Only show if there were filters applied
-      const traceDiv = document.createElement('div');
-      traceDiv.className = 'decision-trace';
-      traceDiv.innerHTML = '<h3>How We Narrowed Your Options</h3>';
-
-      const traceList = document.createElement('div');
-      traceList.className = 'trace-list';
-
-      trace.forEach((item, index) => {
-        const traceItem = document.createElement('div');
-        traceItem.className = 'trace-item';
-
-        if (index === 0) {
-          traceItem.innerHTML = `
-            <div class="trace-step">
-              <strong>${item.count}</strong> ${item.description}
-            </div>
-          `;
-        } else {
-          traceItem.innerHTML = `
-            <div class="trace-arrow">↓</div>
-            <div class="trace-step">
-              <strong>${item.step}</strong> (${item.description}) → <span class="removed-count">${item.removed} removed</span>
-              <div class="remaining-count">${item.count} remaining</div>
-            </div>
-          `;
-        }
-
-        traceList.appendChild(traceItem);
-      });
-
-      traceDiv.appendChild(traceList);
-      resultsContainer.appendChild(traceDiv);
-    }
   }
 
-  // 3. Group methods by fit quality
+  // 2. Group methods by fit quality
   const groups = groupMethodsByFit();
 
   // Helper function to create method card
