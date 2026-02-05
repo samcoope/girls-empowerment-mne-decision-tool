@@ -846,7 +846,8 @@
         ],
         "financial_resources_available": [
           "High",
-          "Medium"
+          "Medium",
+          "Low"
         ],
         "human_resource_skills_available": [
           "High",
