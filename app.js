@@ -715,6 +715,30 @@ function generateDecisionTrace() {
   return trace;
 }
 
+// Function to check for semantic mismatches
+// Returns true if method should be excluded based on logical incompatibility
+function isSemanticMismatch(method, userSelections) {
+  // Rule 1: SEM Level hard blocks
+  // If user selected specific SEM level(s), method MUST support at least one of them
+  if (userSelections.sem_level && userSelections.sem_level.length > 0) {
+    const methodSemLevels = method.attributes.sem_level || [];
+    const userSemLevels = userSelections.sem_level;
+
+    // If method has SEM levels defined, check for overlap
+    if (methodSemLevels.length > 0) {
+      const hasOverlap = userSemLevels.some(level => methodSemLevels.includes(level));
+
+      if (!hasOverlap) {
+        // No SEM level overlap - this is a semantic mismatch
+        // Example: User wants "Individual" but method only supports "Institutional"
+        return true;
+      }
+    }
+  }
+
+  return false; // No semantic mismatch detected
+}
+
 // Function to group methods by fit quality
 function groupMethodsByFit() {
   const groups = {
@@ -772,6 +796,12 @@ function groupMethodsByFit() {
     // Calculate match percentage based on user's selected constraints
     const matchCount = totalConstraints - mismatches.length;
     const matchPercentage = (matchCount / totalConstraints) * 100;
+
+    // SEMANTIC VALIDATION: Check for logical incompatibilities
+    // Skip methods that don't make semantic sense regardless of percentage match
+    if (isSemanticMismatch(method, state.userSelections)) {
+      return; // Skip this method entirely - don't add to any tier
+    }
 
     // Categorize by match percentage
     // 100% = Best Fit
