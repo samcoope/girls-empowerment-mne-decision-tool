@@ -1129,7 +1129,7 @@ function updateResultsDisplay() {
     const shouldExpand = groups.bestFit.length === 0;
     const alternativesSection = createAccordionSection(
       '🔸 Good Alternatives',
-      'These methods are viable with minor adaptations (80-99% match).',
+      'These methods may be viable when exercised with caution or adaptation.',
       groups.goodAlternatives,
       'alternatives-section',
       shouldExpand,
