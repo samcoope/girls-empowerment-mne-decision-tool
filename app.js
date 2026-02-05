@@ -1142,7 +1142,7 @@ function updateResultsDisplay() {
   if (groups.stretchOptions.length > 0) {
     const stretchSection = createAccordionSection(
       '🔶 Stretch Options',
-      'Consider these if you can address the gaps (60-79% match).',
+      'Consider these if it is possible to address some of the identified constraints.',
       groups.stretchOptions,
       'stretch-section',
       false,
