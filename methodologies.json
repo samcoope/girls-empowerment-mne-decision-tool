@@ -415,7 +415,8 @@
         ],
         "human_resource_skills_available": [
           "High",
-          "Medium"
+          "Medium",
+          "Low"
         ],
         "participants_access_to_technology_eg_phones_internet": [
           "High",
@@ -515,7 +516,8 @@
         ],
         "human_resource_skills_available": [
           "High",
-          "Medium"
+          "Medium",
+          "Low"
         ],
         "participants_access_to_technology_eg_phones_internet": [
           "High",
@@ -523,6 +525,7 @@
           "Low"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
@@ -616,7 +619,8 @@
         ],
         "financial_resources_available": [
           "High",
-          "Medium"
+          "Medium",
+          "Low"
         ],
         "human_resource_skills_available": [
           "High",
@@ -684,6 +688,7 @@
           "Low"
         ],
         "level_of_political_sensitivity": [
+          "High",
           "Medium",
           "Low"
         ],
