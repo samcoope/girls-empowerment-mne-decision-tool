@@ -880,7 +880,7 @@ function updateResultsDisplay() {
     descriptionPreview.className = 'methodology-description-preview';
     descriptionPreview.innerHTML = `<p>${method.description}</p>`;
 
-    // Create mismatch info banner (shown before "View More" button for visibility)
+    // Create mismatch info banner (shown before "Read more" button for visibility)
     let mismatchBanner = null;
     if (mismatches.length > 0) {
       mismatchBanner = document.createElement('div');
@@ -897,10 +897,10 @@ function updateResultsDisplay() {
       }
     }
 
-    // Create "View More" toggle button
+    // Create "Read more" toggle button
     const viewMoreBtn = document.createElement('button');
     viewMoreBtn.className = 'view-more-toggle-btn';
-    viewMoreBtn.innerHTML = 'View More <span class="arrow">▼</span>';
+    viewMoreBtn.innerHTML = 'Read more <span class="arrow">▼</span>';
 
     // Create method details
     const details = document.createElement('div');
@@ -933,7 +933,7 @@ function updateResultsDisplay() {
         const linkDiv = document.createElement('div');
         linkDiv.className = 'method-link';
         linkDiv.innerHTML = `
-          <div class="link-label">📚 Implementation Guide${method.link2 ? ' 1' : ''}:</div>
+          <div class="link-label">📚 Further Reading${method.link2 ? ' 1' : ''}:</div>
           <a href="${method.link}" target="_blank" rel="noopener noreferrer">
             ${method.link.length > 60 ? method.link.substring(0, 60) + '...' : method.link}
             <span class="external-icon">↗</span>
@@ -946,7 +946,7 @@ function updateResultsDisplay() {
         const link2Div = document.createElement('div');
         link2Div.className = 'method-link';
         link2Div.innerHTML = `
-          <div class="link-label">📚 Implementation Guide 2:</div>
+          <div class="link-label">📚 Further Reading 2:</div>
           <a href="${method.link2}" target="_blank" rel="noopener noreferrer">
             ${method.link2.length > 60 ? method.link2.substring(0, 60) + '...' : method.link2}
             <span class="external-icon">↗</span>
@@ -1033,11 +1033,11 @@ function updateResultsDisplay() {
     methodCard.appendChild(viewMoreBtn);
     methodCard.appendChild(details);
 
-    // Toggle details when clicking on the "View More" button
+    // Toggle details when clicking on the "Read more" button
     viewMoreBtn.addEventListener('click', function(e) {
         if (details.classList.contains('active')) {
             details.classList.remove('active');
-            viewMoreBtn.innerHTML = 'View More <span class="arrow">▼</span>';
+            viewMoreBtn.innerHTML = 'Read more <span class="arrow">▼</span>';
         } else {
             // Close other open details
             document.querySelectorAll('.methodology-details.active').forEach(detail => {
@@ -1045,10 +1045,10 @@ function updateResultsDisplay() {
                     detail.classList.remove('active');
                 }
             });
-            // Update other "View More" buttons
+            // Update other "Read more" buttons
             document.querySelectorAll('.view-more-toggle-btn').forEach(btn => {
                 if (btn !== viewMoreBtn) {
-                    btn.innerHTML = 'View More <span class="arrow">▼</span>';
+                    btn.innerHTML = 'Read more <span class="arrow">▼</span>';
                 }
             });
             details.classList.add('active');
@@ -1326,12 +1326,12 @@ function downloadResults() {
       // Add links if available
       if (method.link) {
           htmlContent += `
-              <p><strong>📚 Implementation Guide${method.link2 ? ' 1' : ''}:</strong> <a href="${method.link}" target="_blank">${method.link}</a></p>
+              <p><strong>📚 Further Reading${method.link2 ? ' 1' : ''}:</strong> <a href="${method.link}" target="_blank">${method.link}</a></p>
           `;
       }
       if (method.link2) {
           htmlContent += `
-              <p><strong>📚 Implementation Guide 2:</strong> <a href="${method.link2}" target="_blank">${method.link2}</a></p>
+              <p><strong>📚 Further Reading 2:</strong> <a href="${method.link2}" target="_blank">${method.link2}</a></p>
           `;
       }
 
