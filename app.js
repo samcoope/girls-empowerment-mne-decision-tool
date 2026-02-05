@@ -40,6 +40,17 @@ const CATEGORY_DEFINITIONS = {
   }
 };
 
+// Define filterable categories (exclude non-filter attributes like participation, inclusion, behavioral insight)
+const FILTER_CATEGORIES = [
+  'sem_level',
+  'level_of_political_stability',
+  'level_of_cultural_restrictiveness',
+  'financial_resources_available',
+  'human_resource_skills_available',
+  'participants_access_to_technology_eg_phones_internet',
+  'level_of_political_sensitivity'
+];
+
 // State to store user selections and data
 let state = {
   methodsData: null,
@@ -699,18 +710,28 @@ function groupMethodsByFit() {
     stretchOptions: []
   };
 
-  // If no selections, all filtered methods are best fit
-  if (Object.keys(state.userSelections).length === 0) {
-    groups.bestFit = state.filteredMethods.map(m => ({ method: m, mismatches: [] }));
+  // Count how many filterable categories the user selected
+  const userFilterSelections = Object.keys(state.userSelections)
+    .filter(cat => FILTER_CATEGORIES.includes(cat));
+
+  const totalConstraints = userFilterSelections.length;
+
+  // If no selections, all methods are available
+  if (totalConstraints === 0) {
+    groups.bestFit = state.methodsData.methods.map(m => ({
+      method: m,
+      mismatches: [],
+      matchPercentage: 100
+    }));
     return groups;
   }
 
-  // Evaluate ALL methods (not just filtered ones) to find near-matches
+  // Evaluate ALL methods to find matches and near-matches
   state.methodsData.methods.forEach(method => {
     let mismatches = [];
 
-    // Check each user selection against method
-    for (const category in state.userSelections) {
+    // Check each user selection against method (only filter categories)
+    for (const category of userFilterSelections) {
       const selectedOptions = state.userSelections[category];
       const methodValues = method.attributes[category] || [];
 
@@ -729,35 +750,37 @@ function groupMethodsByFit() {
       }
     }
 
-    // Categorize by match quality
-    if (mismatches.length === 0) {
-      groups.bestFit.push({ method: method, mismatches: [] });
-    } else if (mismatches.length === 1) {
-      groups.goodAlternatives.push({
-        method: method,
-        mismatches: mismatches
-      });
-    } else {
-      groups.stretchOptions.push({
-        method: method,
-        mismatches: mismatches
-      });
+    // Calculate match percentage based on user's selected constraints
+    const matchCount = totalConstraints - mismatches.length;
+    const matchPercentage = (matchCount / totalConstraints) * 100;
+
+    // Categorize by match percentage
+    // 100% = Best Fit
+    // 80-99% = Good Alternatives
+    // 60-79% = Stretch Options
+    // <60% = Not shown
+
+    const methodData = {
+      method: method,
+      mismatches: mismatches,
+      matchPercentage: matchPercentage
+    };
+
+    if (matchPercentage === 100) {
+      groups.bestFit.push(methodData);
+    } else if (matchPercentage >= 80) {
+      groups.goodAlternatives.push(methodData);
+    } else if (matchPercentage >= 60) {
+      groups.stretchOptions.push(methodData);
     }
+    // Methods below 60% are not included in any group
   });
 
-  // Only include alternatives if bestFit has fewer than 4 methods
-  if (groups.bestFit.length >= 4) {
-    groups.goodAlternatives = [];
-    groups.stretchOptions = [];
-  } else {
-    // Limit goodAlternatives to bring total to 4 (or max 4 alternatives)
-    const slotsAvailable = 4 - groups.bestFit.length;
-    if (groups.goodAlternatives.length > slotsAvailable) {
-      groups.goodAlternatives = groups.goodAlternatives.slice(0, slotsAvailable);
-    }
-    // Don't show stretch options if we're showing alternatives
-    groups.stretchOptions = [];
-  }
+  // Sort each group by match percentage (descending) for tie-breaking
+  const sortByMatchPercentage = (a, b) => b.matchPercentage - a.matchPercentage;
+  groups.bestFit.sort(sortByMatchPercentage);
+  groups.goodAlternatives.sort(sortByMatchPercentage);
+  groups.stretchOptions.sort(sortByMatchPercentage);
 
   return groups;
 }
@@ -987,51 +1010,125 @@ function updateResultsDisplay() {
     return methodCard;
   }
 
-  // Display Best Fit section
-  if (groups.bestFit.length > 0) {
-    const bestFitSection = document.createElement('div');
-    bestFitSection.className = 'tier-section best-fit-section';
-    bestFitSection.innerHTML = `<h3 class="tier-header">⭐ Best Fit (${groups.bestFit.length} ${groups.bestFit.length === 1 ? 'method' : 'methods'})</h3>`;
+  // Helper function to create accordion section
+  function createAccordionSection(title, description, methods, className, isExpanded, tierType) {
+    const section = document.createElement('div');
+    section.className = `tier-accordion ${className}`;
 
-    groups.bestFit.forEach(methodData => {
-      bestFitSection.appendChild(createMethodCard(methodData));
+    const header = document.createElement('div');
+    header.className = 'accordion-header';
+    header.innerHTML = `
+      <div class="accordion-title">
+        <span class="accordion-icon">${isExpanded ? '▼' : '▶'}</span>
+        <h3 class="tier-header-text">${title}</h3>
+        <span class="method-count">${methods.length} ${methods.length === 1 ? 'method' : 'methods'}</span>
+      </div>
+    `;
+
+    const content = document.createElement('div');
+    content.className = `accordion-content ${isExpanded ? 'expanded' : ''}`;
+
+    if (description) {
+      const descDiv = document.createElement('p');
+      descDiv.className = 'tier-description';
+      descDiv.textContent = description;
+      content.appendChild(descDiv);
+    }
+
+    const methodsContainer = document.createElement('div');
+    methodsContainer.className = 'methods-container';
+    methods.forEach(methodData => {
+      methodsContainer.appendChild(createMethodCard(methodData));
+    });
+    content.appendChild(methodsContainer);
+
+    section.appendChild(header);
+    section.appendChild(content);
+
+    // Toggle accordion on header click
+    header.addEventListener('click', () => {
+      const isCurrentlyExpanded = content.classList.contains('expanded');
+      content.classList.toggle('expanded');
+      const icon = header.querySelector('.accordion-icon');
+      icon.textContent = isCurrentlyExpanded ? '▶' : '▼';
     });
 
+    return section;
+  }
+
+  // Add Expand All / Collapse All button if there are multiple tiers
+  const totalTiers = (groups.bestFit.length > 0 ? 1 : 0) +
+                     (groups.goodAlternatives.length > 0 ? 1 : 0) +
+                     (groups.stretchOptions.length > 0 ? 1 : 0);
+
+  if (totalTiers > 1) {
+    const toggleAllDiv = document.createElement('div');
+    toggleAllDiv.className = 'toggle-all-container';
+    toggleAllDiv.innerHTML = `
+      <button id="expand-all-btn" class="toggle-all-btn">Expand All</button>
+      <button id="collapse-all-btn" class="toggle-all-btn">Collapse All</button>
+    `;
+    resultsContainer.appendChild(toggleAllDiv);
+
+    // Add event listeners after rendering
+    setTimeout(() => {
+      document.getElementById('expand-all-btn')?.addEventListener('click', () => {
+        document.querySelectorAll('.accordion-content').forEach(content => {
+          content.classList.add('expanded');
+        });
+        document.querySelectorAll('.accordion-icon').forEach(icon => {
+          icon.textContent = '▼';
+        });
+      });
+
+      document.getElementById('collapse-all-btn')?.addEventListener('click', () => {
+        document.querySelectorAll('.accordion-content').forEach(content => {
+          content.classList.remove('expanded');
+        });
+        document.querySelectorAll('.accordion-icon').forEach(icon => {
+          icon.textContent = '▶';
+        });
+      });
+    }, 0);
+  }
+
+  // Display Best Fit section (expanded by default)
+  if (groups.bestFit.length > 0) {
+    const bestFitSection = createAccordionSection(
+      '⭐ Best Fit',
+      'These methods match all your constraints perfectly.',
+      groups.bestFit,
+      'best-fit-section',
+      true, // expanded by default
+      'best'
+    );
     resultsContainer.appendChild(bestFitSection);
   }
 
-  // Display Good Alternatives section
+  // Display Good Alternatives section (collapsed by default, expanded if no best fit)
   if (groups.goodAlternatives.length > 0) {
-    const alternativesSection = document.createElement('div');
-    alternativesSection.className = 'tier-section alternatives-section';
-
-    const headerText = groups.bestFit.length < 4
-      ? `🔸 Alternative Methods (${groups.goodAlternatives.length} ${groups.goodAlternatives.length === 1 ? 'method' : 'methods'})`
-      : `🔸 Good Alternatives (${groups.goodAlternatives.length} ${groups.goodAlternatives.length === 1 ? 'method' : 'methods'})`;
-
-    const descriptionText = groups.bestFit.length < 4
-      ? `<p style="margin: 10px 0 15px 0; font-size: 0.9rem; color: #555;">These methods nearly match your criteria - each differs on just one filter.</p>`
-      : '';
-
-    alternativesSection.innerHTML = `<h3 class="tier-header">${headerText}</h3>${descriptionText}`;
-
-    groups.goodAlternatives.forEach(methodData => {
-      alternativesSection.appendChild(createMethodCard(methodData));
-    });
-
+    const shouldExpand = groups.bestFit.length === 0;
+    const alternativesSection = createAccordionSection(
+      '🔸 Good Alternatives',
+      'These methods are viable with minor adaptations (80-99% match).',
+      groups.goodAlternatives,
+      'alternatives-section',
+      shouldExpand,
+      'alternatives'
+    );
     resultsContainer.appendChild(alternativesSection);
   }
 
-  // Display Stretch Options section
+  // Display Stretch Options section (collapsed by default)
   if (groups.stretchOptions.length > 0) {
-    const stretchSection = document.createElement('div');
-    stretchSection.className = 'tier-section stretch-section';
-    stretchSection.innerHTML = `<h3 class="tier-header">🚀 Stretch Options (${groups.stretchOptions.length} ${groups.stretchOptions.length === 1 ? 'method' : 'methods'})</h3>`;
-
-    groups.stretchOptions.forEach(methodData => {
-      stretchSection.appendChild(createMethodCard(methodData));
-    });
-
+    const stretchSection = createAccordionSection(
+      '🔶 Stretch Options',
+      'Consider these if you can address the gaps (60-79% match).',
+      groups.stretchOptions,
+      'stretch-section',
+      false,
+      'stretch'
+    );
     resultsContainer.appendChild(stretchSection);
   }
 
@@ -1039,21 +1136,11 @@ function updateResultsDisplay() {
   if (groups.bestFit.length === 0 && groups.goodAlternatives.length === 0 && groups.stretchOptions.length === 0) {
     resultsContainer.innerHTML = `
       <div class="no-results">
-        <p>No methods match all of your criteria.</p>
-        <p>Try adjusting your selections to see more options.</p>
+        <h3>No Matching Methods Found</h3>
+        <p>No methods match at least 60% of your selected criteria.</p>
+        <p>Try adjusting your selections to see more options, or contact us for guidance on adapting methods to your context.</p>
       </div>
     `;
-  }
-
-  // If we only have alternatives (no best fit), add an explanatory note
-  if (groups.bestFit.length === 0 && groups.goodAlternatives.length > 0) {
-    const noteDiv = document.createElement('div');
-    noteDiv.className = 'context-summary';
-    noteDiv.innerHTML = `
-      <h3>No Perfect Matches</h3>
-      <p>No methods match all your selected criteria. The alternatives below each differ on just one filter.</p>
-    `;
-    resultsContainer.insertBefore(noteDiv, resultsContainer.firstChild);
   }
 }
 
