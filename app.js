@@ -569,9 +569,16 @@ function handleCheckboxChange(event) {
 }
 
 function updateFilteredMethods() {
+  // Guard: Check if methodsData is loaded
+  if (!state.methodsData || !state.methodsData.methods) {
+    console.error('Methods data not loaded yet');
+    state.filteredMethods = [];
+    return;
+  }
+
   // Start with all methods
   state.filteredMethods = [...state.methodsData.methods];
-  
+
   // Filter based on user selections
   for (const category in state.userSelections) {
       const selectedOptions = state.userSelections[category];
@@ -659,6 +666,12 @@ function generateContextSummary() {
 
 // Function to generate decision trace showing filter impact
 function generateDecisionTrace() {
+  // Guard: Check if methodsData is loaded
+  if (!state.methodsData || !state.methodsData.methods) {
+    console.error('Methods data not loaded yet');
+    return [];
+  }
+
   // Start with all methods
   let remaining = [...state.methodsData.methods];
   let trace = [];
@@ -709,6 +722,12 @@ function groupMethodsByFit() {
     goodAlternatives: [],
     stretchOptions: []
   };
+
+  // Guard: Check if methodsData is loaded
+  if (!state.methodsData || !state.methodsData.methods) {
+    console.error('Methods data not loaded yet');
+    return groups;
+  }
 
   // Count how many filterable categories the user selected
   const userFilterSelections = Object.keys(state.userSelections)
