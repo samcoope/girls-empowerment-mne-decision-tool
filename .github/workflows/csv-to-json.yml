@@ -149,7 +149,7 @@ jobs:
         let headers = [];
 
         fs.createReadStream(csvFile)
-          .pipe(csv())
+          .pipe(csv({ separator: ';' }))
           .on('headers', (headerList) => {
             headers = headerList;
             console.log(`Found ${headers.length} columns`);
